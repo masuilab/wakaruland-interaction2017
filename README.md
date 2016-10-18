@@ -2,5 +2,11 @@
 
 ## PDFを作る
 
-    % platex wiss_template.tex
-    % dvipdfmx -p a4 wiss_template.dvi
+    % platex paper
+    % pbibtex paper
+    % platex paper
+    % dvipdfmx -p a4 paper
+    
+または
+    
+    % make

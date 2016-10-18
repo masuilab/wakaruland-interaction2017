@@ -1,42 +1,34 @@
-%
-%	WISS 2015サンプルファイル (未来ビジョンテンプレート, 最後数行空き問題解決バージョン)
-%
-%	2010/07/12 Ver 1.0 秋田 純一
-%	2010/08/04 Ver 1.1 後藤 真孝
-% 	2011/09/27  Ver 1.4 渡邊 恵太 (協力：五十嵐悠紀)
-% 	2015/02/08  Ver 1.5 大槻 麻衣
-% 	2016/05/26  Ver 1.6 大槻 麻衣
+\documentclass[submit,techrep]{ipsj}
 
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{latexsym}
 
-\documentclass[a4paper,twoside,papersize]{wiss}
+\def\Underline{\setbox0\hbox\bgroup\let\\\endUnderline}
+\def\endUnderline{\vphantom{y}\egroup\smash{\underline{\box0}}\\}
+\def\|{\verb|}
 
-\usepackage{ascmac}
-\usepackage[dvips]{graphicx}
-\usepackage{nidanfloat} %% appended in WISS2010 for Future Vision (2010/7/7:akita)
-\usepackage{multicol}
-%\usepackage{color,array}
-%\usepackage{boxedminipage}
+\setcounter{巻数}{53}%vol53=2012
+\setcounter{号数}{10}
+\setcounter{page}{1}
 
-%% balance.styを追加 (2012/9/27:watanabe, Igarashi)
-\usepackage{balance}    %% 最後のページの高さを揃えるために追加  (2012/9/27:watanabe, Igarashi)
-%%% 最後のページの2段組の高さを揃える．\balanceを入れる．
-%%% そろえたくないときは，\nobalance
-
-%% urlのOverflow対策
-\usepackage{url}
-
-\journalhead{わかるらんど: IoT時代の情報共有視覚化} %%%%%% ←←　著者において必ず記入すること
+% インタラクション特有の設定。印刷工程で柱・ノンブルの埋め込みを行う。
+\makeatletter
+\pagestyle{empty}
+\def\@oddhead{}%
+\def\@evenhead{}%
+\def\ps@IPSJTITLEheadings{}
+\makeatother
 
 \begin{document}
 
 \title{わかるらんど: IoT時代の情報共有視覚化}
-\etitle{}%2012年では英文タイトルは廃止されました．記入しないでください．
-%
-%注意
-%
-%
-% WISS2016かラシングルブラインドとなりました．投稿時に氏名と所属を記入してください．
-\author{山田 尚昭\affil{慶應義塾大学大学院 政策・メディア研究科}　　増井 俊之\affil{慶應義塾大学 環境情報学部}}
+\etitle{WakaruLand: A Information Sharing System for IoT}
+
+\affiliate{MG}{慶應義塾大学大学院 政策・メディア研究科}
+\affiliate{EI}{慶應義塾大学 環境情報学部}
+
+\author{山田 尚昭}{Naoaki Yamada}{MG}
+\author{増井 俊之}{Toshiyuki Masui}{EI}
 
 \input{abstract}
 
@@ -49,106 +41,6 @@
 \input{section5}
 \input{section6}
 
-%%
-%%	参考文献
-%%
-% \begin{thebibliography}{1}
+\bibliography{bibsample}
 
-% \bibitem{wiss} WISSホームページ.  http://www.wiss.org/.
-
-% \bibitem{aoki1999} H.~Aoki, B.~Schiele, and A.~Pentland.  Realtime
-% Personal Positioning System for Wearable Computers.  In
-% \emph{Proceedings of the 3rd IEEE International Symposium on Wearable
-% Computers}, pp. 37--43, 1999.
-
-% \bibitem{rekimoto2000} 暦本 純一.  まえがき：WISS2000について.  インタラ
-% クティブシステムとソフトウェアVIII, pp. i--ii. 近代科学社, 2000.
-
-% \end{thebibliography}
-
-\balance %最後の高さを揃えるために必要 (2012/9/27:watanabe, Igarashi)
-\bibliographystyle{jwiss}
-\bibliography{paper}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% WISS2012では，「未来ビジョン」は以下のように，本文と同様の2段組形式で記載する．
-%% 図を用いても良いが，枠のサイズ(縦93mm)を変更してはならない．
-%% （WISS2010では，縦118mmでしたのでご注意下さい）
-
-\begin{figure*}[!b]
-\setlength{\unitlength}{1mm}\fboxrule=0.5pt
-
-\vspace{-93mm} %% 未来ビジョンの枠が下がってしまうのを防ぐ WIS2012 カメラレディテンプレで追加  (2012/9/27:watanabe, Igarashi)
-
-% 未来ビジョンの枠の描画
-\begin{center}
-\framebox[0.95\textwidth]{
-\begin{minipage}{0mm}\begin{picture}(0,91)(0,0)\end{picture}\end{minipage}
-}
-\end{center}
-\vspace*{-93mm}	% 未来ビジョンの枠の縦幅分だけ戻す
-
-% 未来ビジョンの内容
-\newbox\FUTURE
-\setbox\FUTURE=\vbox{
-\begin{minipage}[b]{0.9\textwidth}
-\begin{multicols}{2}	% 二段組にする
-\section*{未来ビジョン}
-\setlength{\parindent}{10pt}	% 段落先頭の字下げ
-
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-%	   未来ビジョンは，下記に記入して下さい		  %
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-
-\vspace*{-1mm}
-
-% フォントサイズ指定
-\normalsize
-%\large
-%\small\setlength{\baselineskip}{12pt}
-%\footnotesize\setlength{\baselineskip}{12pt}
-
-わかるらんどは「人の気持ちを察したい」という思想から作られたシステムである．
-初期のプロトタイプは文字が書かれた札を掲げるというアナログなものだった．
-会議やコンファレンスなど多人数に向けての発表の場において最も悲しいことは，聴衆から何のフィードバックもないことである．
-「わからん」「なるほど」といった簡単な相づちがあるだけでも印象は異なる．
-私自身が口下手で感情のアウトプットが得意なほうではないこともあって，
-思ったことを口にしやすいコミュニケーション環境をインタフェースの工夫によって作り上げることがこの研究のミッションである．
-わかるらんどが私と同じ悩みを抱えている人の一助になれば幸いである．
-
-%% 文章を補う図表を利用してもよい．
-\vspace*{5mm}
-\includegraphics[width=0.95\columnwidth]{images/wakaru.eps}
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-%	   未来ビジョンは，上記に記入して下さい		  %
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-
-\end{multicols}
-\end{minipage}
-}
-
-% 未来ビジョンの内容の描画
-\newlength{\FUTUREHT}
-\setlength{\FUTUREHT}{\the\ht\FUTURE}	% 未来ビジョンの内容の縦幅保存
-%\typeout{\the\wd\FUTURE}
-%\typeout{\the\ht\FUTURE}
-\hspace*{0.045\textwidth}	% 未来ビジョンの内容の横位置調整
-\box\FUTURE
-%\typeout{\the\FUTUREHT}
-\vspace*{-\the\FUTUREHT}	% 未来ビジョンの内容の縦幅分だけ戻す
-\vspace*{-10.9mm}		% 微調整
-
-% 未来ビジョンの枠の領域の再確保（これがないと枠が下に沈み込む）
-\begin{center}
-\fboxrule=0pt
-%\fboxrule=2pt	% デバッグ用: コメントアウトをやめて，同じ位置に枠が出るか？
-\framebox[0.9\textwidth]{
-\begin{minipage}{0mm}\begin{picture}(0,91)(0,0)\end{picture}\end{minipage}
-}
-\end{center}
-\end{figure*}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
