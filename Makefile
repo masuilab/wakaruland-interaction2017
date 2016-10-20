@@ -1,7 +1,9 @@
 all:
 	platex paper
+	pbibtex paper
 	platex paper
-	dvipdfmx -p a4 paper.dvi
+	platex paper
+	dvipdfmx -p a4 paper
 	open paper.pdf
 
 clean:
