@@ -4,15 +4,18 @@
 HTML/CSS/JavaScriptで実装されており、
 通常のブラウザ上でのWebアプリケーションとして動作する。
 
-サーバは並列計算プリミティブLindaをWebサーバ上に実装したWebLinda\footnote{https://github.com/node-linda/linda}を用いて実装している。
+サーバは並列計算プリミティブLindaをWebサーバ上に実装した
+WebLinda\footnote{https://github.com/node-linda/linda}を用いて実装している。
 
 \subsection{Linda}
+
 Linda\cite{Carriero:1989:LC:63334.63337}は、
-複数のプロセスで共有される空間を用いてプロセス間通信や
-データ共有をサポートする分散並列処理を行うためのモデルである。
-プロセスが共有する空間はタプル空間 (Tuple Space) と呼ばれ、
+複数のプロセスで共有される空間を用いて
+プロセス間通信やデータ共有をサポートする
+分散並列処理を行うためのモデルである。
+プロセスが共有する空間は\textbf{タプル空間} (Tuple Space) と呼ばれ、
 タプル空間内のデータ (Tuple) を使って通信やデータ共有を行う (図\ref{linda})。
-このように Linda のモデルはきわめて単純であるが、
+Lindaのモデルはきわめて単純であるが、
 各クライアントやデバイス間で直接送信をする処理を記述する必要がなく，
 柔軟で強力なプロセス間通信を容易に記述することができる。
 
@@ -21,15 +24,20 @@ Linda\cite{Carriero:1989:LC:63334.63337}は、
 \fbox{
 \includegraphics[width=7cm]{images/linda.png}
 }
-\caption{タプルスペースのイメージ}
+\caption{タプル空間を利用したプロセス間通信}
 \label{button}
 \end{figure}
 
 \subsection{WebLinda}
-WebLindaは、橋本翔\footnote{http://shokai.org}氏が開発したオープンソースソフトウェアで、Node.js\footnote{https://nodejs.org}のWebSocketライブラリSocket.IO\footnote{http://socket.io}上に実装されたLindaシステムである。
-通常のWebサーバ上に実装されているため、
-HTTP通信ができれば様々な環境やプログラミング言語でWebLindaを使うことができる。
-WebLindaは、\url{write, read, take, watch}の4つの基本操作によってプロセス間通信を行う。
+WebLindaは、橋本翔\footnote{http://shokai.org}氏が開発したオープンソースソフトウェアで、
+Node.js\footnote{https://nodejs.org}の
+WebSocketライブラリ「Socket.IO\footnote{http://socket.io}」上に
+実装されたLindaシステムである。
+WebLindaは通常のWebサーバ上に実装されているため、
+HTTP通信をサポートする様々な環境やプログラミング言語で利用可能である。
+
+WebLindaは、\texttt{write}, \texttt{read}, \texttt{take}, \texttt{watch}という
+4つの基本操作によってプロセス間通信を行う。
 
 \vspace{2mm}
 \paragraph*{write}
