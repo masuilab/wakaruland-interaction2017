@@ -28,10 +28,11 @@ WebLindaは、橋本翔\footnote{http://shokai.org}氏が開発したオープ�
 通常のWebサーバ上に実装されているため、HTTP通信ができればWebLindaを使うことができる。
 WebLindaは、\url{write, read, take, watch}の4つの基本操作によってプロセス間通信を行う。
 
+\vspace{2mm}
 \paragraph*{write}
 新しいデータオブジェクト（タプル）を生成し共有空間（タプルスペース）に書き込む。
 
-\vspace{2mm}
+\vspace{4mm}
 \paragraph*{read}
 指定した形式に部分一致するタプルがタプルスペースにあるかどうか調べて1つ読み出す。
 一致するものが無い場合は一致するタプルが書き込まれるまで待つ。
@@ -46,13 +47,123 @@ WebLindaは、\url{write, read, take, watch}の4つの基本操作によって�
 
 \subsection{『わかるらんど』でのWebLinda実装}
 『わかるらんど』でのWebLinda実装について述べる。
-ユーザのリアクションを表示する際には、
+ユーザのリアクションを投稿/表示する際には、
+\vspace{2mm}
 \begin{verbatim}
 {
+    type: "reaction",
     from: "@napo0703",
-    display: 60,
-    value: "なる ほど",
-    type: "reaction"
+    display: "60",
+    value: "なる ほど"
 }
 \end{verbatim}
-というタプルをやりとりしている。
+\vspace{2mm}
+というようなタプルをやりとりしている。
+
+センサやWebのデータを投稿/表示する際には、
+\vspace{2mm}
+\begin{verbatim}
+{
+    type: "data",
+    from: "明るさ",
+    display: "60",
+    value: "500",
+    background: "http://masuilab.org/image.jpg"
+}
+\end{verbatim}
+\vspace{2mm}
+というようなタプルをやりとりしている。
+
+\vspace{4mm}
+\paragraph*{type}
+ユーザのリアクションの場合は\url{reaction}、データの場合は\url{data}を値にする。
+
+\vspace{4mm}
+\paragraph*{from}
+投稿元を表す値。
+
+\vspace{2mm}
+\paragraph*{display}
+リアクションやデータの表示時間。単位は秒。リアクションやデータが表示されてからこの秒数が経過すると、自動的に取り下げられ表示されなくなる。20~86400の間で指定が可能。
+
+\vspace{2mm}
+\paragraph*{value}
+リアクションの場合、この値がWebにある画像ファイルのURLだった時は、その画像を投稿者のセルにオーバーレイ表示する。URLでない文字列の場合は、その文字列を投稿者のセルにオーバーレイ表示する。
+データの場合、この値がそのままセルの下部に表示される。
+
+\vspace{4mm}
+\paragraph*{background}（データのみ）
+データセルの背景画像のURL。そのデータが何を表すものなのか分かる画像を表示する。
+
+\vspace{2mm}
+以下は、ボタンを押した際に『わかるらんど』にユーザ「@napo0703」として「なる ほど」という「リアクション」を「20秒」表示するタプルを書き込むJavaScriptプログラムの例である。
+
+\vspace{2mm}
+\begin{verbatim}
+// Lindaに接続
+const url = "http://linda.masuilab.org";
+const socket = SocketIO(url);
+const linda = new Linda().connect(socket);
+const ts = linda.tuplespace("masuilab");
+
+// ボタンを押したらタプルスペースにデータ書き込み
+const button = $("button").click(function () {
+  ts.write({
+    type: "reaction",
+    from: "@napo0703",
+    display: "20",
+    value: "http://masuilab.org/image.jpg",
+  };
+});
+\end{verbatim}
+\vspace{2mm}
+
+以下は、先程のプログラムで書き込まれるタプルと合致する
+\url{{from: "@napo0703", type: "reaction"}}を含むタプルが書き込まれた場合に
+リアクションを表示するJavaScriptプログラムの例である。
+
+\vspace{2mm}
+\begin{verbatim}
+// Lindaに接続
+const url = "http://linda.masuilab.org";
+const socket = SocketIO(url);
+const linda = new Linda().connect(socket);
+const ts = linda.tuplespace("masuilab");
+
+// 合致するタプルが書き込まれたら画像を変える
+ts.watch({
+    from: "@napo0703",
+    type: "reaction"
+    }, function (tuple) {
+  $("img").attr("src", tuple.data.value);
+};
+\end{verbatim}
+\vspace{2mm}
+
+以下は現在の江ノ島の風向と風速をタプルスペースに書き込むRubyプログラムである。
+NokogiriというライブラリでWebページから必要な情報をスクレイピングして
+タプルスペースに書き込んでいる。
+
+\vspace{2mm}
+\begin{verbatim}
+url = 'http://linda.masuilab.org'
+linda = Linda::SocketIO::Client.connect url
+ts = linda.tuplespace('masuilab')
+
+ts.on :connect do
+  // Nokogiriでスクレイピング
+  web = 'http://www.s-n-p.jp/kishou.htm'
+  doc = Nokogiri::HTML(open(web))
+  // 必要な情報を取得
+  tds = doc.xpath("//td")
+  as = tds[16].xpath(".//b").text.sub(/[^\d\.].*$/,'')
+  ad = tds[19].xpath(“.//b”).text
+  // タプルスペースに書き込み
+  ts.write(
+      where: 'enoshima',
+      type: 'data',
+      name: 'wind',
+      value: ad + as.to_f + ‘m/s')
+end
+\end{verbatim}
+\vspace{2mm}
