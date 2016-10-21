@@ -23,6 +23,7 @@
 *.out
 *.synctex.gz
 *~
+*.pdf
 .idea
 wakaruland-wiss2016.iml
 git.pdf
