@@ -6,7 +6,8 @@
 サーバは並列計算プリミティブLindaをWebサーバ上に実装したWebLinda\footnote{https://github.com/node-linda/linda}を用いて実装している。
 
 \subsection{Linda}
-Lindaは、複数のプロセスで共有される空間を用いてプロセス間通信や
+Linda\cite{Carriero:1989:LC:63334.63337}は、
+複数のプロセスで共有される空間を用いてプロセス間通信や
 データ共有をサポートする分散並列処理を行うためのモデルである。
 プロセスが共有する空間はタプル空間 (Tuple Space) と呼ばれ、
 タプル空間内のデータ (Tuple) を使って通信やデータ共有を行う (図\ref{linda})。
@@ -19,13 +20,14 @@ Lindaは、複数のプロセスで共有される空間を用いてプロセス
 \fbox{
 \includegraphics[width=7cm]{images/linda.png}
 }
-\caption{Linda}
+\caption{タプルスペースのイメージ}
 \label{button}
 \end{figure}
 
 \subsection{WebLinda}
 WebLindaは、橋本翔\footnote{http://shokai.org}氏が開発したオープンソースソフトウェアで、Node.js\footnote{https://nodejs.org}のWebSocketライブラリSocket.IO\footnote{http://socket.io}上に実装されたLindaシステムである。
-通常のWebサーバ上に実装されているため、HTTP通信ができればWebLindaを使うことができる。
+通常のWebサーバ上に実装されているため、
+HTTP通信ができれば様々な環境やプログラミング言語でWebLindaを使うことができる。
 WebLindaは、\url{write, read, take, watch}の4つの基本操作によってプロセス間通信を行う。
 
 \vspace{2mm}
@@ -84,7 +86,7 @@ WebLindaは、\url{write, read, take, watch}の4つの基本操作によって�
 
 \vspace{2mm}
 \paragraph*{display}
-リアクションやデータの表示時間。単位は秒。リアクションやデータが表示されてからこの秒数が経過すると、自動的に取り下げられ表示されなくなる。20~86400の間で指定が可能。
+リアクションやデータの表示時間。単位は秒。リアクションやデータが表示されてからこの秒数が経過すると、自動的に取り下げられ表示されなくなる。20〜86400の間で指定が可能。
 
 \vspace{2mm}
 \paragraph*{value}
