@@ -1,4 +1,5 @@
 .DS_Store
+paper.pdf
 *.aux
 *.glo
 *.idx
@@ -26,4 +27,4 @@
 *.pdf
 .idea
 wakaruland-wiss2016.iml
-git.pdf
+
