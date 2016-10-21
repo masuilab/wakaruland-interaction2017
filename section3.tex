@@ -1,15 +1,18 @@
 \section{実装}
 
-『わかるらんど』クライアントは
+わかるらんどのクライアントは
 HTML/CSS/JavaScriptで実装されており、
-通常のブラウザ上でのWebアプリケーションとして動作する。
-
-サーバは並列計算プリミティブLindaをWebサーバ上に実装した
+通常のブラウザ上のWebアプリケーションとして動作する。
+%
+サーバは、
+並列計算プリミティブである
+\textit{Linda}\cite{Carriero:1989:LC:63334.63337}を
+Webサーバ上に実装した
 WebLinda\footnote{https://github.com/node-linda/linda}を用いて実装している。
 
 \subsection{Linda}
 
-Linda\cite{Carriero:1989:LC:63334.63337}は、
+Lindaは、
 複数のプロセスで共有される空間を用いて
 プロセス間通信やデータ共有をサポートする
 分散並列処理を行うためのモデルである。
@@ -29,15 +32,19 @@ Lindaのモデルはきわめて単純であるが、
 \end{figure}
 
 \subsection{WebLinda}
-WebLindaは、橋本翔\footnote{http://shokai.org}氏が開発したオープンソースソフトウェアで、
+
+WebLindaは、橋本翔氏が開発したオープンソースソフトウェアで、
+% \footnote{http://shokai.org}
 Node.js\footnote{https://nodejs.org}の
-WebSocketライブラリ「Socket.IO\footnote{http://socket.io}」上に
-実装されたLindaシステムである。
+WebSocketライブラリ「Socket.IO\footnote{http://socket.io}」で
+実装されている。
 WebLindaは通常のWebサーバ上に実装されているため、
 HTTP通信をサポートする様々な環境やプログラミング言語で利用可能である。
 
 WebLindaは、\texttt{write}, \texttt{read}, \texttt{take}, \texttt{watch}という
 4つの基本操作によってプロセス間通信を行う。
+
+% ここは\enumerate じゃないのか?
 
 \vspace{2mm}
 \paragraph*{write}
@@ -50,7 +57,7 @@ WebLindaは、\texttt{write}, \texttt{read}, \texttt{take}, \texttt{watch}とい
 
 \vspace{2mm}
 \paragraph*{take}
-\url{read}しつつ、読み出したタプルをタプルスペースから削除する。
+\texttt{read}しつつ、読み出したタプルをタプルスペースから削除する。
 
 \vspace{2mm}
 \paragraph*{watch}
