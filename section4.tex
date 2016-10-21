@@ -68,9 +68,39 @@ WISS2009の実証実験\cite{nishida2011}によれば、
 \end{figure}
 
 \subsection{研究室においての利用経験}
-我々の研究室では、約6ヶ月の間大型ディスプレイに研究室メンバー全員のリアクションと
-研究室の「明るさ」「温度」「風速と風向」「最後にドアが開いた時間」「研究室のWebカメラの映像」
-を表示した『わかるらんど』を常に表示して利用してきた。
+我々の研究室ではWebLindaを使用して、
+\begin{itemize}
+\item 部屋の明るさを知る
+\item 部屋の温度を知る
+\item 風速と風向を知る
+\item 入口のドアの鍵を開ける
+\item 部屋の照明を点ける/消す
+\end{itemize}
+をSlack\footnote{https://slack.com}のチャットボットを通じて行えるIoT環境を構築しているが、
+『わかるらんど』と組み合わせることでさらに便利に使うことができた。
+
+図\ref{light}は部屋の明るさを表示するデータセルだが、
+明るさのデータの値が小さい時は\texttt{background}画像を変更することで、
+照明が点いているのか消えているのかがわかるようになった。
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=7cm]{images/light.png}
+\caption{照明が消えている時（左）と注いている時（右）}
+\label{light}
+\end{figure}
+
+図\ref{door}は、研究室のドアが最後に開いた時間を表示するデータセルである。
+普段は扉の画像をtexttt{background}にしているが、
+実際に扉が開いた時に10秒間だけtexttt{background}を図\ref{door}右のように
+扉を開ける人の画像にすることで、誰かが入室したことが視覚的にわかるようになった。
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=7cm]{images/door.png}
+\caption{ドアの普段の表示（左）と誰かが入室した時（右）}
+\label{door}
+\end{figure}
 
 ミーティングの時間には積極的に『わかるらんど』を利用し、
 普段発言の少ない人でも何らかの反応を表明したり、
@@ -84,17 +114,3 @@ WISS2009の実証実験\cite{nishida2011}によれば、
 \caption{『わかるらんど』を使用したミーティング}
 \label{wara}
 \end{figure}
-
-自分が研究室にいないときでもリアクションを投稿して、
-研究室でも自宅でも研究室メンバーの気分や研究室のセンサ情報が見られるようになった。
-
-研究室で利用しているチャットでチャットボットに話しかけることで、研究室の
-\begin{itemize}
-  \item ドアの鍵を開ける
-  \item 照明を点ける／消す
-  \item 明るさを知る
-  \item 気温を知る
-\end{itemize}
-ことができるが、『わかるらんど』と組み合わせることで非常に便利に使うことができた。
-
-
