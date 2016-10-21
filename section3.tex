@@ -61,26 +61,23 @@ WebLindaは、\texttt{write}, \texttt{read}, \texttt{take}, \texttt{watch}とい
 
 \vspace{2mm}
 \paragraph*{watch}
-タプルスペースを監視し、一致するタプルが\url{write}された瞬間に読み出す。
+タプルスペースを監視し、一致するタプルが\texttt{write}された瞬間に読み出す。
 
 \subsection{『わかるらんど』でのWebLinda実装}
 『わかるらんど』でのWebLinda実装について述べる。
 ユーザのリアクションを投稿/表示する際には、
-\vspace{2mm}
-\begin{verbatim}
+\begin{lstlisting}
 {
     type: "reaction",
     from: "@napo0703",
     display: "60",
     value: "なる ほど"
 }
-\end{verbatim}
-\vspace{2mm}
+\end{lstlisting}
 というようなタプルをやりとりしている。
 
 センサやWebのデータを投稿/表示する際には、
-\vspace{2mm}
-\begin{verbatim}
+\begin{lstlisting}
 {
     type: "data",
     from: "明るさ",
@@ -88,13 +85,12 @@ WebLindaは、\texttt{write}, \texttt{read}, \texttt{take}, \texttt{watch}とい
     value: "500",
     background: "http://masuilab.org/image.jpg"
 }
-\end{verbatim}
-\vspace{2mm}
+\end{lstlisting}
 というようなタプルをやりとりしている。
 
 \vspace{4mm}
 \paragraph*{type}
-ユーザのリアクションの場合は\url{reaction}、データの場合は\url{data}を値にする。
+ユーザのリアクションの場合は\texttt{reaction}、データの場合は\texttt{data}を値にする。
 
 \vspace{4mm}
 \paragraph*{from}
@@ -117,7 +113,7 @@ WebLindaは、\texttt{write}, \texttt{read}, \texttt{take}, \texttt{watch}とい
 以下は、ボタンを押した際に『わかるらんど』にユーザ「@napo0703」として「なる ほど」という「リアクション」を「20秒」表示するタプルを書き込むJavaScriptプログラムの例である。
 
 \vspace{2mm}
-\begin{verbatim}
+\begin{lstlisting}
 // Lindaに接続
 const url = "http://linda.masuilab.org";
 const socket = SocketIO(url);
@@ -133,15 +129,14 @@ const button = $("button").click(function () {
     value: "http://masuilab.org/image.jpg",
   };
 });
-\end{verbatim}
-\vspace{2mm}
+\end{lstlisting}
 
 以下は、先程のプログラムで書き込まれるタプルと合致する
-\url{{from: "@napo0703", type: "reaction"}}を含むタプルが書き込まれた場合に
+\texttt{{from: "@napo0703", type: "reaction"}}を含むタプルが書き込まれた場合に
 リアクションを表示するJavaScriptプログラムの例である。
 
 \vspace{2mm}
-\begin{verbatim}
+\begin{lstlisting}
 // Lindaに接続
 const url = "http://linda.masuilab.org";
 const socket = SocketIO(url);
@@ -155,15 +150,14 @@ ts.watch({
     }, function (tuple) {
   $("img").attr("src", tuple.data.value);
 };
-\end{verbatim}
-\vspace{2mm}
+\end{lstlisting}
 
 以下は現在の江ノ島の風向と風速をタプルスペースに書き込むRubyプログラムである。
 NokogiriというライブラリでWebページから必要な情報をスクレイピングして
 タプルスペースに書き込んでいる。
 
 \vspace{2mm}
-\begin{verbatim}
+\begin{lstlisting}
 url = 'http://linda.masuilab.org'
 linda = Linda::SocketIO::Client.connect url
 ts = linda.tuplespace('masuilab')
@@ -183,5 +177,4 @@ ts.on :connect do
       name: 'wind',
       value: ad + as.to_f + ‘m/s')
 end
-\end{verbatim}
-\vspace{2mm}
+\end{lstlisting}
