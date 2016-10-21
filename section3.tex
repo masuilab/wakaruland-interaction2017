@@ -47,26 +47,27 @@ WebLindaは、\texttt{write}, \texttt{read}, \texttt{take}, \texttt{watch}とい
 % ここは\enumerate じゃないのか?
 
 \vspace{2mm}
-\paragraph*{write}
+\paragraph*{\texttt{write}}
 新しいデータオブジェクト（タプル）を生成し共有空間（タプルスペース）に書き込む。
 
 \vspace{4mm}
-\paragraph*{read}
+\paragraph*{\texttt{read}}
 指定した形式に部分一致するタプルがタプルスペースにあるかどうか調べて1つ読み出す。
 一致するものが無い場合は一致するタプルが書き込まれるまで待つ。
 
 \vspace{2mm}
-\paragraph*{take}
+\paragraph*{\texttt{take}}
 \texttt{read}しつつ、読み出したタプルをタプルスペースから削除する。
 
 \vspace{2mm}
-\paragraph*{watch}
+\paragraph*{\texttt{watch}}
 タプルスペースを監視し、一致するタプルが
 \texttt{write}された瞬間に読み出す。
 
 \subsection{『わかるらんど』でのWebLinda実装}
 『わかるらんど』でのWebLinda実装について述べる。
 ユーザのリアクションを投稿/表示する際には、
+
 \vspace{2mm}
 \begin{verbatim}
 {
