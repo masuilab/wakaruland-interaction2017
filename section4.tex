@@ -3,7 +3,7 @@
 \subsection{『わかるらんど』の思想}
 
 近年，学会などでタイムライン表示のテキストチャットが
-利用される機会が増えている\cite{wiss_challenge}．
+利用される機会が増えている\cite{goto2012}．
 学会チャットシステムを利用すると，
 発表中に参加者が意見交換したり疑問を表明したりできるといった利点があるが，
 以下のような問題も存在する．
@@ -21,13 +21,13 @@ WISS (Workshopn on Interactive Systems and Software)コンファレンス\footno
   \textsf{http://wiss.org/}
 }では，
 学会が提供するチャットシステムに参加者がログインして
-議論するのが恒例になっており，
+議論するのが恒例になっており\cite{wiss_challenge}，
 2009年以降のWISSコンファレンスでは
-「On Air Forum」\cite{OnAirForum}という
+「On Air Forum」\cite{nishida2011}という
 学会チャットシステムが利用されている．
 %
 しかし，
-WISS2009の実証実験\cite{nishida2011}によれば，
+WISS2009の実証実験によれば，
 全参加者の半分弱しかログインして1回以上発言していなかった．
 またWISS2015では，252アカウントが1回以上発言し総発言数は2,948回であったが，
 発言数上位20\%の50アカウントによる発言が総発言数の78.1\%にあたる2,305回を占めていた（図\ref{wisschat}）．
@@ -35,7 +35,7 @@ WISS2009の実証実験\cite{nishida2011}によれば，
 
 \begin{figure}[h]
 \centering\includegraphics[width=8cm]{images/wisschat.png}
-\caption{WISS2016のチャットにおけるアカウント毎の発言数}
+\caption{WISS2015のチャットにおけるアカウント毎の発言数}
 \label{wisschat}
 \end{figure}
 
@@ -68,7 +68,8 @@ WISS2009の実証実験\cite{nishida2011}によれば，
 \end{figure}
 
 \subsection{研究室においての利用経験}
-我々の研究室ではWebLindaを使用して，
+我々の研究室ではWebLindaを使用して，Web情報やArduinoやRaspberry Piに接続した
+センサ情報をタプル空間に書き込むことで、
 \begin{itemize}
 \item 部屋の明るさを知る
 \item 部屋の温度を知る
@@ -76,8 +77,9 @@ WISS2009の実証実験\cite{nishida2011}によれば，
 \item 入口のドアの鍵を開ける
 \item 部屋の照明を点ける/消す
 \end{itemize}
-をSlack\footnote{https://slack.com}のチャットボットを通じて行えるIoT環境を構築している
-(図\ref{slack})が，『わかるらんど』と組み合わせることでさらに便利に使うことができた．
+といったことをSlack\footnote{https://slack.com}のチャットボットを通じて行える
+IoT環境を構築している(図\ref{slack})が，『わかるらんど』と組み合わせることで
+さらに便利に使うことができた．
 
 \begin{figure}[h]
 \centering
