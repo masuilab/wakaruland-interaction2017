@@ -8,7 +8,7 @@ HTML/CSS/JavaScriptで実装されており，
 並列計算プリミティブである
 \textit{Linda}\cite{Carriero:1989:LC:63334.63337}を
 Webサーバ上に実装した
-WebLinda\footnote{https://github.com/node-linda/linda}を用いて実装している．
+\textit{WebLinda}\cite{shokai_furnitue}\footnote{https://github.com/node-linda/linda}を用いて実装している．
 
 \subsection{Linda}
 
@@ -18,7 +18,7 @@ WebLinda\footnote{https://github.com/node-linda/linda}を用いて実装して�
 分散並列処理を行うためのモデルである．
 プロセスが共有する空間は\textbf{タプル空間} (Tuple Space) と呼ばれ，
 タプル空間内のデータ (Tuple) を使って通信やデータ共有を行う (図\ref{linda})．
-Lindaのモデルはきわめて単純であるが，
+\textit{Linda}のモデルはきわめて単純であるが，
 各クライアントやデバイス間で直接送信をする処理を記述する必要がなく，
 柔軟で強力なプロセス間通信を容易に記述することができる．
 
@@ -33,7 +33,7 @@ Lindaのモデルはきわめて単純であるが，
 
 \subsection{WebLinda}
 
-WebLindaは，橋本翔氏が開発したオープンソースソフトウェアで，
+\textit{WebLinda}は，橋本翔氏が開発したオープンソースソフトウェアで，
 % \footnote{http://shokai.org}
 Node.js\footnote{https://nodejs.org}の
 WebSocketライブラリ「Socket.IO\footnote{http://socket.io}」で
@@ -41,7 +41,7 @@ WebSocketライブラリ「Socket.IO\footnote{http://socket.io}」で
 WebLindaは通常のWebサーバ上に実装されているため，
 HTTP通信をサポートする様々な環境やプログラミング言語で利用可能である．
 
-WebLindaは，\texttt{write}, \texttt{read}, \texttt{take}, \texttt{watch}という
+\textit{WebLinda}は，\texttt{write}, \texttt{read}, \texttt{take}, \texttt{watch}という
 4つの基本操作によってプロセス間通信を行う．
 
 \vspace{2mm}
@@ -58,7 +58,7 @@ WebLindaは，\texttt{write}, \texttt{read}, \texttt{take}, \texttt{watch}とい
 \end{description}
 
 \subsection{『わかるらんど』でのWebLinda実装}
-『わかるらんど』でのWebLinda実装について述べる．
+『わかるらんど』での\textit{WebLinda}実装について述べる．
 ユーザのリアクションを投稿/表示する際には，
 
 \begin{lstlisting}
@@ -99,9 +99,10 @@ WebLindaは，\texttt{write}, \texttt{read}, \texttt{take}, \texttt{watch}とい
 リアクションの場合，この値がWebにある画像ファイルのURLだった時は，その画像を投稿者のセルにオーバーレイ表示する．URLでない文字列の場合は，その文字列を投稿者のセルにオーバーレイ表示する．
 データの場合，この値がそのままセルの下部に表示される．
 
-\item[\texttt{write}（データのみ）]\mbox{}\\
+\item[\texttt{background}（データのみ）]\mbox{}\\
 データセルの背景画像のURL．そのデータが何を表すものなのか分かる画像を表示する．
 \end{description}
+\vspace{4mm}
 
 以下は，ボタンを押した際に『わかるらんど』にユーザ「@napo0703」として「なる ほど」という「リアクション」を「20秒」表示するタプルを書き込むJavaScriptプログラムの例である．
 
@@ -144,6 +145,7 @@ ts.watch({
   $("img").attr("src", tuple.data.value);
 };
 \end{lstlisting}
+\vspace{4mm}
 
 以下は現在の江ノ島の風向と風速をタプルスペースに書き込むRubyプログラムである．
 Nokogiri\footnote{http://www.nokogiri.org}というライブラリでWebページから必要な情報をスクレイピングして
@@ -171,3 +173,5 @@ ts.on :connect do
       value: ad + as.to_f + ‘m/s')
 end
 \end{lstlisting}
+
+\subsection{各種IoT機器との連携}
