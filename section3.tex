@@ -28,7 +28,7 @@ Webサーバ上に実装した
 \includegraphics[width=7cm]{images/linda.png}
 }
 \caption{タプル空間を利用したプロセス間通信}
-\label{button}
+\label{linda}
 \end{figure}
 
 \subsection{WebLinda}
@@ -40,6 +40,9 @@ WebSocketライブラリ「Socket.IO\footnote{http://socket.io}」で
 実装されている．
 WebLindaは通常のWebサーバ上に実装されているため，
 HTTP通信をサポートする様々な環境やプログラミング言語で利用可能である．
+それゆえ、Arduino\footnote{https://www.arduino.cc}や
+Raspberry Pi\footnote{https://www.raspberrypi.org}
+などといった各種のIoT機器との連携も容易である。
 
 \textit{WebLinda}は，\texttt{write}, \texttt{read}, \texttt{take}, \texttt{watch}という
 4つの基本操作によってプロセス間通信を行う．
@@ -173,5 +176,3 @@ ts.on :connect do
       value: ad + as.to_f + ‘m/s')
 end
 \end{lstlisting}
-
-\subsection{各種IoT機器との連携}

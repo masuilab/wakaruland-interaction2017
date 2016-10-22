@@ -30,13 +30,22 @@ WISS (Workshopn on Interactive Systems and Software)コンファレンス\footno
 WISS2009の実証実験によれば，
 全参加者の半分弱しかログインして1回以上発言していなかった．
 またWISS2015では，252アカウントが1回以上発言し総発言数は2,948回であったが，
-発言数上位20\%の50アカウントによる発言が総発言数の78.1\%にあたる2,305回を占めていた（図\ref{wisschat}）．
-また，発言数が10回未満のアカウントは190アカウントで，これは全アカウントの75.3\%にあたる．
+発言数上位20\%の50アカウントによる発言が
+総発言数の78.1\%にあたる2,305回を占めていた（図\ref{wisschat}）．
+発言数が10回未満のアカウントは190アカウントで，これは全アカウントの75.3\%にあたる．
+図\ref{powerlaw}のようにアカウントと発言数は冪分布になっており、
+特定の人ばかりが発言して、発言しない人は全く発言しない傾向が顕著に現れている。
 
 \begin{figure}[h]
 \centering\includegraphics[width=8cm]{images/wisschat.png}
-\caption{WISS2015のチャットにおけるアカウント毎の発言数}
+\caption{WISS2015のチャットにおけるアカウントと発言数の分布}
 \label{wisschat}
+\end{figure}
+
+\begin{figure}[h]
+\centering\includegraphics[width=8cm]{images/powerlaw.png}
+\caption{図\ref{wisschat}の両対数グラフ}
+\label{powerlaw}
 \end{figure}
 
 『わかるらんど』はユーザの表示領域が均等に決まっているため，
@@ -69,9 +78,9 @@ WISS2009の実証実験によれば，
 
 \subsection{研究室においての利用経験}
 我々の研究室では、
-約6ヶ月の間『わかるらんど』を研究室内の大型ディスプレイに表示して利用してきた。
-我々の研究室ではWebLindaを使用して，Web情報やArduinoやRaspberry Piに接続した
-センサ情報をタプル空間に書き込むことで、
+約6ヶ月の間『わかるらんど』を研究室内の大型ディスプレイに表示して実際に利用してきた。
+我々の研究室ではWebLindaを使用して，
+Web情報やArduinoやRaspberry Piに接続したセンサ情報を利用し、
 \begin{itemize}
 \item 部屋の明るさを知る
 \item 部屋の温度を知る
@@ -126,4 +135,25 @@ IoT環境を構築している(図\ref{slack})が，『わかるらんど』と�
 \includegraphics[width=7cm]{images/wara.png}
 \caption{『わかるらんど』を使用したミーティング}
 \label{wara}
+\end{figure}
+
+また、コンピュータで何か別の作業をしているときに、
+Webブラウザで『わかるらんど』を開いてリアクションするのが面倒であるという意見もあった。
+そこで、図\ref{heebutton}や図\ref{10key}のような
+独自の『わかるらんど』入力ハードウェアを作成した。
+これらを利用することで、限られたリアクションではあるが、
+Webブラウザを開くことなく『わかるらんど』にリアクションを表示することができるようになった。
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=7cm]{images/heebutton.png}
+\caption{押すと「へぇ〜」とリアクションできるボタン}
+\label{heebutton}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=5cm]{images/10key.png}
+\caption{テンキーを利用した入力装置}
+\label{10key}
 \end{figure}
