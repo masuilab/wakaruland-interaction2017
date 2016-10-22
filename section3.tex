@@ -52,11 +52,11 @@ Raspberry Pi\footnote{https://www.raspberrypi.org}
 \item[\texttt{write}]\mbox{}\\
 新しいデータオブジェクト（タプル）を生成し共有空間（タプル空間）に書き込む．
 \item[\texttt{read}]\mbox{}\\
-\texttt{read}しつつ，読み出したタプルをタプルスペースから削除する．
+\texttt{read}しつつ，読み出したタプルをタプル空間から削除する．
 \item[\texttt{take}]\mbox{}\\
-\texttt{read}しつつ，読み出したタプルをタプルスペースから削除する．
+\texttt{read}しつつ，読み出したタプルをタプル空間から削除する．
 \item[\texttt{watch}]\mbox{}\\
-タプルスペースを監視し，一致するタプルが
+タプル空間を監視し，一致するタプルが
 \texttt{write}された瞬間に読み出す．
 \end{description}
 
@@ -117,7 +117,7 @@ const socket = SocketIO(url);
 const linda = new Linda().connect(socket);
 const ts = linda.tuplespace("masuilab");
 
-// ボタンを押したらタプルスペースにデータ書き込み
+// ボタンを押したらタプル空間にデータ書き込み
 const button = $("button").click(function () {
   ts.write({
     type: "reaction",
@@ -150,9 +150,9 @@ ts.watch({
 \end{lstlisting}
 \vspace{4mm}
 
-以下は現在の江ノ島の風向と風速をタプルスペースに書き込むRubyプログラムである．
-Nokogiri\footnote{http://www.nokogiri.org}というライブラリでWebページから必要な情報をスクレイピングして
-タプルスペースに書き込んでいる．
+以下は現在の江ノ島の風向と風速をタプル空間に書き込むRubyプログラムである．
+Nokogiri\footnote{http://www.nokogiri.org}というライブラリで
+Webページから必要な情報をスクレイピングしてタプル空間に書き込んでいる．
 
 \vspace{2mm}
 \begin{lstlisting}
@@ -168,7 +168,7 @@ ts.on :connect do
   tds = doc.xpath('//td')
   as = tds[16].xpath('.//b').text.sub(/[^\d\.].*$/,'')
   ad = tds[19].xpath('.//b').text
-  // タプルスペースに書き込み
+  // タプル空間に書き込み
   ts.write(
       where: 'enoshima',
       type: 'data',
