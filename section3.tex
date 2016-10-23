@@ -52,7 +52,7 @@ Raspberry Pi\footnote{https://www.raspberrypi.org}
 \item[\texttt{write}]\mbox{}\\
 新しいデータオブジェクト（タプル）を生成し共有空間（タプル空間）に書き込む．
 \item[\texttt{read}]\mbox{}\\
-\texttt{read}しつつ，読み出したタプルをタプル空間から削除する．
+タプル空間からタプルを読み出す．
 \item[\texttt{take}]\mbox{}\\
 \texttt{read}しつつ，読み出したタプルをタプル空間から削除する．
 \item[\texttt{watch}]\mbox{}\\
@@ -60,9 +60,11 @@ Raspberry Pi\footnote{https://www.raspberrypi.org}
 \texttt{write}された瞬間に読み出す．
 \end{description}
 
-\subsection{『わかるらんど』でのWebLinda実装}
+\subsection{WebLindによる『わかるらんど』の実装}
+
 『わかるらんど』での\textit{WebLinda}実装について述べる．
 ユーザのリアクションを投稿/表示する際には，
+センサと『わかるらんど』の間で
 
 \begin{lstlisting}
 {
@@ -96,7 +98,8 @@ Raspberry Pi\footnote{https://www.raspberrypi.org}
 投稿元を表す値．
 
 \item[\texttt{display}]\mbox{}\\
-リアクションやデータの表示時間．単位は秒．リアクションやデータが表示されてからこの秒数が経過すると，自動的に取り下げられ表示されなくなる．20〜86400の間で指定が可能．
+リアクションやデータの表示時間．単位は秒．リアクションやデータが表示されてからこの秒数が経過すると，自動的に取り下げられ表示されなくなる．
+%20〜86400の間で指定が可能．
 
 \item[\texttt{value}]\mbox{}\\
 リアクションの場合，この値がWebにある画像ファイルのURLだった時は，その画像を投稿者のセルにオーバーレイ表示する．URLでない文字列の場合は，その文字列を投稿者のセルにオーバーレイ表示する．
